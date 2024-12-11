@@ -1,0 +1,111 @@
+#bookForm {
+    margin-bottom: 20px;
+}
+
+#bookForm input {
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#bookForm button {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#bookForm button:hover {
+    background-color: #218838;
+}
+
+/* Gaya untuk input pencarian */
+#searchInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#searchButton {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background-color: #0056b3;
+}
+
+/* Gaya untuk daftar buku */
+h2 {
+    margin-top: 20px;
+}
+
+#incompleteBookList, #completeBookList {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+/* Gaya untuk setiap buku */
+.book {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+.book h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.book p {
+    margin: 5px 0;
+}
+
+/* Gaya untuk tombol dalam daftar buku */
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.undo-button {
+    background-color: #ffc107;
+    color: white;
+}
+
+.undo-button:hover {
+    background-color: #e0a800;
+}
+
+.trash-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.trash-button:hover {
+    background-color: #c82333;
+}
+
+.check-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.check-button:hover {
+    background-color: #218838;
+}
