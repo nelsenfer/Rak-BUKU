@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (isStorageExist()) {
     loadDataFromStorage();
   }
+  bookItemIsCompleteButton;
 });
 
 function addBook() {
@@ -84,11 +85,13 @@ function makeBookShelf(bookObject) {
   textContainer.append(textTitle, textAuthor, textYear);
 
   const container = document.createElement("div");
+  container.setAttribute("data-testid", "bookItem");
   container.append(textContainer);
   container.setAttribute("id", +bookObject.id);
 
   if (bookObject.isCompleted) {
     const undoButton = document.createElement("button");
+    undoButton.setAttribute("data-testid", "bookItemIsCompleteButton");
     undoButton.innerText = "undo";
     undoButton.classList.add("undo-button");
     undoButton.addEventListener("click", function () {
@@ -96,6 +99,7 @@ function makeBookShelf(bookObject) {
     });
 
     const trashButton = document.createElement("button");
+    trashButton.setAttribute("data-testid", "bookItemDeleteButton");
     trashButton.innerText = "hapus";
     trashButton.classList.add("trash-button");
     trashButton.addEventListener("click", function () {
@@ -105,6 +109,7 @@ function makeBookShelf(bookObject) {
     container.append(undoButton, trashButton);
   } else {
     const checkButton = document.createElement("button");
+    checkButton.setAttribute("data-testid", "bookItemIsCompleteButton");
     checkButton.innerText = "check";
     checkButton.classList.add("check-button");
 
@@ -113,6 +118,7 @@ function makeBookShelf(bookObject) {
     });
 
     const trashButton = document.createElement("button");
+    trashButton.setAttribute("data-testid", "bookItemDeleteButton");
     trashButton.innerText = "hapus";
     trashButton.classList.add("trash-button");
     trashButton.addEventListener("click", function () {
