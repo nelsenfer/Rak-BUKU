@@ -87,7 +87,7 @@ function makeBookShelf(bookObject) {
   const container = document.createElement("div");
   container.setAttribute("data-testid", "bookItem");
   container.append(textContainer);
-  container.setAttribute("id", +bookObject.id);
+  container.setAttribute("data-bookid" + bookObject.id);
 
   if (bookObject.isCompleted) {
     const undoButton = document.createElement("button");
