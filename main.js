@@ -22,6 +22,7 @@ function addBook() {
   const bookTitle = document.getElementById("bookFormTitle").value;
   const bookAuthor = document.getElementById("bookFormAuthor").value;
   const bookYear = document.getElementById("bookFormYear").value;
+  const bookChecked = document.getElementById("bookFormIsComplete").checked;
   const generateID = generateId();
 
   const bookObject = generateBookObject(
@@ -29,7 +30,7 @@ function addBook() {
     bookTitle,
     bookAuthor,
     bookYear,
-    false
+    bookChecked
   );
   books.push(bookObject);
   document.dispatchEvent(new Event(RENDER_EVENT));
