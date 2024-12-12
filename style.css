@@ -1,5 +1,38 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Quicksand,sans-serif;
+}
+
 #bookForm {
     margin-bottom: 20px;
+}
+
+header{
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+.warp{
+    background-color:aliceblue;
+    padding: 80px;
+    border: solid 1px ;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.form input {
+    margin-bottom: 10px;
+    margin-left: 14px;
+    width: 200px;
+}
+
+#bookFormIsComplete{
+    margin-left: -80px;
 }
 
 #bookForm input {
@@ -22,15 +55,14 @@
     background-color: #218838;
 }
 
-/* Gaya untuk input pencarian */
-#searchInput {
+#searchSubmit {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 10px;
 }
 
-#searchButton {
+#searchSubmit {
     padding: 8px 12px;
     background-color: #007bff;
     color: white;
@@ -39,46 +71,28 @@
     cursor: pointer;
 }
 
-#searchButton:hover {
+#searchSubmit:hover {
     background-color: #0056b3;
 }
 
-/* Gaya untuk daftar buku */
+
 h2 {
     margin-top: 20px;
 }
 
-#incompleteBookList, #completeBookList {
+#incompleteBookList>div, #completeBookList> div{
     margin: 10px 0;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #f9f9f9;
 }
 
-/* Gaya untuk setiap buku */
-.book {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #007bff;
-    border-radius: 4px;
-    background-color: #ffffff;
-}
-
-.book h2 {
-    margin: 0;
-    font-size: 18px;
-}
-
-.book p {
-    margin: 5px 0;
-}
-
-/* Gaya untuk tombol dalam daftar buku */
 button {
     margin-top: 10px;
+    margin-left: 10px;
     padding: 5px 10px;
-    border: none;
+    border: solid 1px;
     border-radius: 4px;
     cursor: pointer;
 }
