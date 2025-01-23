@@ -1,9 +1,125 @@
-.undo-button {
-    width: 40px;
-    height: 40px;
-    
-    background-size: contain;
-    margin-left: auto;
-    cursor: pointer;
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Quicksand,sans-serif;
+}
+
+#bookForm {
+    margin-bottom: 20px;
+}
+
+header{
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+.warp{
+    background-color:aliceblue;
+    padding: 80px;
+    border: solid 1px ;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.form input {
+    margin-bottom: 10px;
+    margin-left: 14px;
+    width: 200px;
+}
+
+#bookFormIsComplete{
+    margin-left: -80px;
+}
+
+#bookForm input {
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#bookForm button {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
     border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#bookForm button:hover {
+    background-color: #218838;
+}
+
+#searchSubmit {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#searchSubmit {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#searchSubmit:hover {
+    background-color: #0056b3;
+}
+
+
+h2 {
+    margin-top: 20px;
+}
+
+#incompleteBookList>div, #completeBookList> div{
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+button {
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: solid 1px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.undo-button {
+    background-color: #ffc107;
+    color: white;
+}
+
+.undo-button:hover {
+    background-color: #e0a800;
+}
+
+.trash-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.trash-button:hover {
+    background-color: #c82333;
+}
+
+.check-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.check-button:hover {
+    background-color: #218838;
 }

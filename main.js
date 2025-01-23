@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function addBook() {
   const bookTitle = document.getElementById("bookFormTitle").value;
   const bookAuthor = document.getElementById("bookFormAuthor").value;
-  const bookYear = document.getElementById("bookFormYear").value;
+  const bookYear = parseInt(document.getElementById("bookFormYear").value);
+  const bookChecked = document.getElementById("bookFormIsComplete").checked;
   const generateID = generateId();
 
   const bookObject = generateBookObject(
@@ -29,20 +30,20 @@ function addBook() {
     bookTitle,
     bookAuthor,
     bookYear,
-    false
+    bookChecked
   );
   books.push(bookObject);
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
 
-function generateBookObject(id, title, author, year, isCompleted) {
+function generateBookObject(id, title, author, year, isComplete) {
   return {
     id,
     title,
     author,
     year,
-    isCompleted,
+    isComplete,
   };
 }
 
@@ -56,7 +57,7 @@ document.addEventListener(RENDER_EVENT, function () {
 
   for (const bookItem of books) {
     const bookElement = makeBookShelf(bookItem);
-    if (!bookItem.isCompleted) {
+    if (!bookItem.isComplete) {
       incompletedBOOKList.append(bookElement);
     } else {
       completedBOOKList.append(bookElement);
@@ -65,24 +66,31 @@ document.addEventListener(RENDER_EVENT, function () {
 });
 
 function makeBookShelf(bookObject) {
-  const textTitle = document.createElement("h2");
+  const textTitle = document.createElement("h3");
+  textTitle.setAttribute("data-testid", "bookItemTitle");
+  textTitle.classList.add("book-title");
   textTitle.innerText = bookObject.title;
 
-  const textAutor = document.createElement("p");
-  textAutor.innerText = `Penulis: ${bookObject.author}`;
+  const textAuthor = document.createElement("p");
+  textAuthor.setAttribute("data-testid", "bookItemAuthor");
+  textAuthor.innerText = "Penulis: " + bookObject.author;
 
   const textYear = document.createElement("p");
-  textYear.innerText = `Terbit: ${bookObject.year}`;
+  textYear.setAttribute("data-testid", "bookItemYear");
+  textYear.innerText = "Tahun: " + bookObject.year;
 
   const textContainer = document.createElement("div");
-  textContainer.append(textTitle, textAutor, textYear);
+  textContainer.classList.add("subContainer");
+  textContainer.append(textTitle, textAuthor, textYear);
 
   const container = document.createElement("div");
+  container.setAttribute("data-testid", "bookItem");
   container.append(textContainer);
-  container.setAttribute("id", `book-${bookObject.id}`);
+  container.setAttribute("data-bookid", bookObject.id);
 
-  if (bookObject.isCompleted) {
+  if (bookObject.isComplete) {
     const undoButton = document.createElement("button");
+    undoButton.setAttribute("data-testid", "bookItemIsCompleteButton");
     undoButton.innerText = "undo";
     undoButton.classList.add("undo-button");
     undoButton.addEventListener("click", function () {
@@ -90,6 +98,7 @@ function makeBookShelf(bookObject) {
     });
 
     const trashButton = document.createElement("button");
+    trashButton.setAttribute("data-testid", "bookItemDeleteButton");
     trashButton.innerText = "hapus";
     trashButton.classList.add("trash-button");
     trashButton.addEventListener("click", function () {
@@ -99,6 +108,7 @@ function makeBookShelf(bookObject) {
     container.append(undoButton, trashButton);
   } else {
     const checkButton = document.createElement("button");
+    checkButton.setAttribute("data-testid", "bookItemIsCompleteButton");
     checkButton.innerText = "check";
     checkButton.classList.add("check-button");
 
@@ -107,6 +117,7 @@ function makeBookShelf(bookObject) {
     });
 
     const trashButton = document.createElement("button");
+    trashButton.setAttribute("data-testid", "bookItemDeleteButton");
     trashButton.innerText = "hapus";
     trashButton.classList.add("trash-button");
     trashButton.addEventListener("click", function () {
@@ -142,7 +153,7 @@ function addTaskToCompleted(bookId) {
 
   if (bookTarget == null) return;
 
-  bookTarget.isCompleted = true;
+  bookTarget.isComplete = true;
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
@@ -161,7 +172,7 @@ function undoBookFromCompleted(bookId) {
 
   if (bookTarget == null) return;
 
-  bookTarget.isCompleted = false;
+  bookTarget.isComplete = false;
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
@@ -193,4 +204,24 @@ function loadDataFromStorage() {
   }
 
   document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
+const searchBookForm = document.getElementById("searchBook");
+searchBookForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  searchBook();
+});
+
+function searchBook() {
+  const inputSearchTitle = document
+    .getElementById("searchBookTitle")
+    .value.toLowerCase();
+  const bookTitles = document.querySelectorAll(".subContainer");
+  for (const titles of bookTitles) {
+    if (titles.textContent.toLowerCase().includes(inputSearchTitle)) {
+      titles.parentElement.style.display = "block";
+    } else {
+      titles.parentElement.style.display = "none";
+    }
+  }
 }
